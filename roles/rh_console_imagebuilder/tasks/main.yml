@@ -15,7 +15,7 @@
   ansible.builtin.set_fact:
     rhsm_access_token: "{{ access_token_request.json.access_token }}"
 
-- name: Build VMware image
+- name: Start build process
   ansible.builtin.uri:
     method: POST
     body:
@@ -23,7 +23,7 @@
       image_name: "{{ rhsm_image_name }}"
       image_requests:
         - architecture: "{{ imagebuilder_architecture }}"
-          image_type: "{{ rhsm_image_type }}"
+          image_type: "{{ imagebuilder_image_type }}"
           upload_request:
             type: aws.s3
             options: {}
@@ -54,6 +54,6 @@
 - name: Download image
   ansible.builtin.get_url:
     url: "{{ rhsm_compose_status.json.image_status.upload_status.options.url }}"
-    dest: "{{ rhsm_dest_folder }}/{{ rhsm_image_name }}.vmdk"
+    dest: "{{ imagebuilder_dest_folder }}/{{ rhsm_image_name }}.vmdk"
     mode: '0644'
-  when: rhsm_dest_folder is defined
+  when: imagebuilder_download_file is true
