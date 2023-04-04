@@ -1,0 +1,9 @@
+ancestor: null
+releases:
+  0.0.6:
+    changes:
+      major_changes:
+      - Added support for guest-image image type (qcow2).
+    fragments:
+    - first-release.yml
+    release_date: '2023-04-04'
