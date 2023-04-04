@@ -1,0 +1,23 @@
+objects:
+  role:
+    rh_console_imagebuilder:
+      description: Ansible role to utilize Red Hat Image Builder from console.redhat.com.
+      name: rh_console_imagebuilder
+      version_added: null
+plugins:
+  become: {}
+  cache: {}
+  callback: {}
+  cliconf: {}
+  connection: {}
+  filter: {}
+  httpapi: {}
+  inventory: {}
+  lookup: {}
+  module: {}
+  netconf: {}
+  shell: {}
+  strategy: {}
+  test: {}
+  vars: {}
+version: 0.0.6
