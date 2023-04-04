@@ -1,0 +1,6 @@
+---
+# defaults file for rh-console-imagebuilder
+imagebuilder_custom_filesystem: []
+imagebuilder_architecture: x86_64
+imagebuilder_dest_folder: /tmp
+imagebuilder_download_file: false

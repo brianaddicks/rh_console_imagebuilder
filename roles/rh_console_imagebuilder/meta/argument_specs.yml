@@ -1,0 +1,31 @@
+---
+argument_specs:
+  main:
+    short_description: Ansible role to utilize Red Hat Image Builder from console.redhat.com.
+    options:
+      imagebuilder_architecture:
+        description: Desired architecture for your image
+        type: str
+        required: false
+        default: x86_64
+        choices:
+          - x86_64
+          - aarch64
+
+      imagebuilder_image_type:
+        description: Desired image type
+        type: str
+        required: true
+        choices:
+          - aws
+          - azure
+          - edge-commit
+          - edge-installer
+          - gcp
+          - guest-image
+          - image-installer
+          - vsphere
+          - ami
+          - rhel-edge-commit
+          - rhel-edge-installer
+          - vhd
