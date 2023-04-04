@@ -1,7 +1,7 @@
 ---
 # This workflow action will run pre-commit, which will execute ansible and yaml linting
 # See .pre-commit-config.yaml for what hooks are executed
-name: Release
+name: Release Pipeline
 
 on:
   workflow_call:
@@ -43,7 +43,7 @@ on:
 
 jobs:
   pre-commit:
-    uses: brianaddicks/rh_console_imagebuilder/.github/workflows/pre-commit.yml@main
+    uses: redhat-cop/ansible_collections_tooling/.github/workflows/pre-commit.yml@main
     with:
       collection_namespace: ${{ inputs.collection_namespace }}
       collection_name: ${{ inputs.collection_name }}
