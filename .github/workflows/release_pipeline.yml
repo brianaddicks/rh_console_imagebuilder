@@ -87,8 +87,7 @@ jobs:
     steps:
       - run: >-
           python -c "assert set([
-          '${{ needs.infra_release.result }}',
-          '${{ needs.cop_release.result }}',
+          '${{ needs.galaxy_release.result }}',
           ]) == {'success'}"
   # deployEE:
   #   needs:
