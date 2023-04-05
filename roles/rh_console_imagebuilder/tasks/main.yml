@@ -57,9 +57,4 @@
     dest: "{{ imagebuilder_dest_folder }}/{{ imagebuilder_image_name }}.vmdk"
     mode: '0644'
   when: imagebuilder_download_file is true
-
-- name: Register stats for workflows
-  ansible.builtin.set_stats:
-    data:
-    imagebuilder_download_url: "{{ imagebuilder_compose_status.json.image_status.upload_status.options.url }}"
 ...
