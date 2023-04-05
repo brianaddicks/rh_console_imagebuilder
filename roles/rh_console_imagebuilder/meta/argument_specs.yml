@@ -29,3 +29,34 @@ argument_specs:
           - rhel-edge-commit
           - rhel-edge-installer
           - vhd
+
+      imagebuilder_image_name:
+        description: Name of new image
+        type: str
+        required: true
+
+      imagebuilder_distribution:
+        description: Distribution version for new image
+        type: str
+        required: false
+        default: rhel-9
+        choices:
+          - rhel-8
+          - rhel-84
+          - rhel-85
+          - rhel-86
+          - rhel-87
+          - rhel-9
+          - rhel-90
+          - rhel-91
+          - centos-8
+          - centos-9
+          - fedora-35
+          - fedora-36
+          - fedora-37
+          - fedora-38
+
+      rhsm_offline_token:
+        description: Offline API token for interacting with Red Hat Subscription Manager APIs
+        type: str
+        required: true

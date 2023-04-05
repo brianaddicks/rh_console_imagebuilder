@@ -19,8 +19,8 @@
   ansible.builtin.uri:
     method: POST
     body:
-      distribution: "{{ rhsm_distribution }}"
-      image_name: "{{ rhsm_image_name }}"
+      distribution: "{{ imagebuilder_distribution }}"
+      image_name: "{{ imagebuilder_image_name }}"
       image_requests:
         - architecture: "{{ imagebuilder_architecture }}"
           image_type: "{{ imagebuilder_image_type }}"
@@ -28,32 +28,32 @@
             type: aws.s3
             options: {}
       customizations:
-        packages: "{{ rhsm_image_packages }}"
+        packages: "{{ imagebuilder_image_packages }}"
         filesystem: "{{ imagebuilder_custom_filesystem }}"
     body_format: json
     url: https://console.redhat.com/api/image-builder/v1/compose
     headers:
       Authorization: "Bearer {{ rhsm_access_token }}"
     status_code: 201
-  register: rhsm_compose_response
+  register: imagebuilder_compose_response
 
 - name: Set fact for image id
   ansible.builtin.set_fact:
-    rhsm_compose_id: "{{ rhsm_compose_response.json.id }}"
+    imagebuilder_compose_id: "{{ imagebuilder_compose_response.json.id }}"
 
 - name: Check build progress
   ansible.builtin.uri:
     headers:
       Authorization: "Bearer {{ rhsm_access_token }}"
-    url: "https://console.redhat.com/api/image-builder/v1/composes/{{ rhsm_compose_id }}"
-  register: rhsm_compose_status
-  until: rhsm_compose_status.json.image_status.status == "success"
+    url: "https://console.redhat.com/api/image-builder/v1/composes/{{ imagebuilder_compose_id }}"
+  register: imagebuilder_compose_status
+  until: imagebuilder_compose_status.json.image_status.status == "success"
   retries: 10
   delay: 30
 
 - name: Download image
   ansible.builtin.get_url:
-    url: "{{ rhsm_compose_status.json.image_status.upload_status.options.url }}"
-    dest: "{{ imagebuilder_dest_folder }}/{{ rhsm_image_name }}.vmdk"
+    url: "{{ imagebuilder_compose_status.json.image_status.upload_status.options.url }}"
+    dest: "{{ imagebuilder_dest_folder }}/{{ imagebuilder_image_name }}.vmdk"
     mode: '0644'
   when: imagebuilder_download_file is true
