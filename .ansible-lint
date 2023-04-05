@@ -9,6 +9,8 @@ exclude_paths:
   - 'roles/master_role_example/'
   - 'changelogs/'
   - 'tests/templated_role_example'
+skip_list:
+  - yaml[line-length]
 parseable: true
 use_default_rules: true
 ...
