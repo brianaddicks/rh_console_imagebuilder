@@ -57,6 +57,6 @@ argument_specs:
           - fedora-38
 
       rhsm_offline_token:
-        description: Offline API token for interacting with Red Hat Subscription Manager APIs
+        description: 'Offline API token for interacting with Red Hat Subscription Manager APIs, can also be declared as environment variable: REDHAT_API_OFFLINE_TOKEN'
         type: str
-        required: true
+        required: false
