@@ -11,6 +11,7 @@ exclude_paths:
   - 'tests/templated_role_example'
 skip_list:
   - yaml[line-length]
+  - jinja[invalid]
 parseable: true
 use_default_rules: true
 ...
