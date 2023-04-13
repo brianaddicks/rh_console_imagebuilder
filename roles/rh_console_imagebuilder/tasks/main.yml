@@ -55,6 +55,16 @@
         imagebuilder_compose_id is not defined or
         (imagebuilder_first_matching_compose_elapsed_seconds is defined and (imagebuilder_first_matching_compose_elapsed_seconds | int) > imagebuilder_max_elapsed)
   block:
+    # import upload request tasks
+    - name: Setup upload request
+      ansible.builtin.import_tasks:
+        file: upload_request.yml
+
+    # import customization tasks
+    - name: Setup customizations
+      ansible.builtin.import_tasks:
+        file: customizations.yml
+
     - name: Start build process
       ansible.builtin.uri:
         method: POST
@@ -64,12 +74,8 @@
           image_requests:
             - architecture: "{{ imagebuilder_architecture }}"
               image_type: "{{ imagebuilder_image_type }}"
-              upload_request:
-                type: aws.s3
-                options: {}
-          customizations:
-            packages: "{{ imagebuilder_image_packages }}"
-            filesystem: "{{ imagebuilder_custom_filesystem }}"
+              upload_request: "{{ imagebuilder_upload_request }}"
+          customizations: "{{ imagebuilder_customizations }}"
         body_format: json
         url: https://console.redhat.com/api/image-builder/v1/compose
         headers:
@@ -124,4 +130,10 @@
     - name: Set fact for image id
       ansible.builtin.set_fact:
         imagebuilder_compose_status: "{{ imagebuilder_compose_building }}"
+
+- name: Get meta data
+  ansible.builtin.uri:
+    headers:
+      Authorization: "Bearer {{ rhsm_access_token }}"
+    url: "https://console.redhat.com/api/image-builder/v1/openapi.json"
 ...
