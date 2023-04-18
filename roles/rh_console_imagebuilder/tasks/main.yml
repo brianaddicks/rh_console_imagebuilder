@@ -41,6 +41,7 @@
 
     # had to do this separate because it relies on a fact from above
     - name: Set fact for first existing compose elapsed time
+      when: imagebuilder_compose_id | length > 0
       ansible.builtin.set_fact:
         imagebuilder_first_matching_compose_elapsed_seconds: "{{ (now(true) - (imagebuilder_first_matching_compose_created_at | to_datetime(datetime_format))).seconds }}"
       vars:
@@ -52,7 +53,7 @@
 # no existing image exists
 - name: Build new image
   when: imagebuilder_force_create or
-        imagebuilder_compose_id is not defined or
+        (imagebuilder_compose_id | length == 0) or
         (imagebuilder_first_matching_compose_elapsed_seconds is defined and (imagebuilder_first_matching_compose_elapsed_seconds | int) > imagebuilder_max_elapsed)
   block:
     # import upload request tasks

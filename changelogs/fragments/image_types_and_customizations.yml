@@ -1,7 +1,0 @@
----
-major_changes:
-  - Added support for AWS, Azure, and GCP images
-  - Added support for resuming role if it's interuptted
-  - Added imagebuilder_force_create to ignore existing builds
-  - Removed download options, role returns URL to download to be handled by user outside of the role
-...
