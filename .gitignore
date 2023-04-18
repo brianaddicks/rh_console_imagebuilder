@@ -7,3 +7,4 @@ id_rsa*
 test
 tests/output
 local-test.yml
+ansible-navigator.log
