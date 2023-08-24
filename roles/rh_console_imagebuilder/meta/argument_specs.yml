@@ -25,6 +25,7 @@ argument_specs:
           - guest-image
           - image-installer
           - vsphere
+          - vsphere-ova
           - ami
           - rhel-edge-commit
           - rhel-edge-installer
