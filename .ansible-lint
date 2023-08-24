@@ -9,6 +9,7 @@ exclude_paths:
   - 'roles/master_role_example/'
   - 'changelogs/'
   - 'tests/templated_role_example'
+  - 'galaxy.yml'
 skip_list:
   - yaml[line-length]
   - jinja[invalid]

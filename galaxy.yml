@@ -1,0 +1,24 @@
+---
+namespace: brianaddicks
+name: rh_console_imagebuilder
+version: 1.0.3
+description: A role to use Red Hat's Image Builder from console.redhat.com.
+readme: README.md
+authors:
+    - Brian Addicks @brianaddicks
+
+repository: https://github.com/brianaddicks/rh_console_imagebuilder
+issues: https://github.com/brianaddicks/rh_console_imagebuilder/issues
+build_ignore:
+    - galaxy.yml.j2
+    - release.yml
+    - .github
+    - .ansiblelint.yml
+    - .yamllint.yml
+    - '*.tar.gz'
+license:
+    - GPL-3.0-or-later
+tags:
+    - redhat_image_builder
+    - collection
+...
