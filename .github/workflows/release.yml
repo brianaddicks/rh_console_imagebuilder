@@ -29,9 +29,9 @@ jobs:
     uses: "redhat-cop/ansible_collections_tooling/.github/workflows/release_pipeline_single.yml@main"
     with:
       collection_namespace: brianaddicks
-      collection_name: rh_console_imagebuilder
+      collection_name: rh_console_imagebuilder1
       collection_version: ${{ github.ref_name }}
-      collection_repo: https://github.com/brianaddicks/rh_console_imagebuilder/
+      collection_repo: https://github.com/brianaddicks/rh_console_imagebuilder1/
       quay_username: rh_ee_baddicks
     secrets:
 
