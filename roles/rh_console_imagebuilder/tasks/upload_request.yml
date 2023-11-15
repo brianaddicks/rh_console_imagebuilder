@@ -57,11 +57,10 @@
     imagebuilder_upload_request:
       type: "azure"
       options:
-        share_with_accounts:
-          image_name: "{{ imagebuilder_image_name }}"
-          resource_group: "{{ imagebuilder_azure_resource_group }}"
-          subscription_id: "{{ imagebuilder_azure_subscription_id }}"
-          tenant_id: "{{ imagebuilder_azure_tenant_id }}"
+        image_name: "{{ imagebuilder_image_name }}"
+        resource_group: "{{ imagebuilder_azure_resource_group }}"
+        subscription_id: "{{ imagebuilder_azure_subscription_id }}"
+        tenant_id: "{{ imagebuilder_azure_tenant_id }}"
 
 # default
 - name: "Setup upload request: default"
