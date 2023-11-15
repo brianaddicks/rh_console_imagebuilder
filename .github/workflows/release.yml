@@ -26,16 +26,16 @@ jobs:
   release:
     # needs:
     #   - ci_standalone
-    uses: "brianaddicks/rh_console_imagebuilder/.github/workflows/release_pipeline.yml@main"
+    uses: "redhat-cop/ansible_collections_tooling/.github/workflows/release_pipeline_single.yml@main"
     with:
       collection_namespace: brianaddicks
       collection_name: rh_console_imagebuilder
       collection_version: ${{ github.ref_name }}
       collection_repo: https://github.com/brianaddicks/rh_console_imagebuilder/
-      # quay_username: ${{ secrets.QUAY_USERNAME }}
+      quay_username: rh_ee_baddicks
     secrets:
+
       galaxy_api_key: ${{ secrets.ANSIBLE_GALAXY_APIKEY }}
-      # infra_api_key: ${{ secrets.GALAXY_INFRA_KEY }}
       token: ${{ secrets.GITHUB_TOKEN }}
-      # quay_token: ${{ secrets.QUAY_PASSWORD }}
+      quay_token: ${{ secrets.QUAY_TOKEN }}
 ...
