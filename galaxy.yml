@@ -1,7 +1,7 @@
 ---
 namespace: brianaddicks
 name: rh_console_imagebuilder
-version: 1.0.3
+version: 1.0.7
 description: A role to use Red Hat's Image Builder from console.redhat.com.
 readme: README.md
 authors:

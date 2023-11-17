@@ -125,7 +125,7 @@
         url: "https://console.redhat.com/api/image-builder/v1/composes/{{ imagebuilder_compose_id }}"
       register: imagebuilder_compose_building
       until: imagebuilder_compose_building.json.image_status.status != "building"
-      retries: 10
+      retries: "{{ imagebuilder_retries }}"
       delay: 30
 
     - name: Set fact for image id
