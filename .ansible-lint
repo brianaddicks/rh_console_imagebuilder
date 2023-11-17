@@ -10,6 +10,7 @@ exclude_paths:
   - 'changelogs/'
   - 'tests/templated_role_example'
   - 'galaxy.yml'
+  - .gitignore
 skip_list:
   - yaml[line-length]
   - jinja[invalid]
